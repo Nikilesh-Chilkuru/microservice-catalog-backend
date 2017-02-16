@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * This interface declares the methods that provides CRUD operations for
  * {@link com.p632.catalog.service.MS} objects.
- * @author Petri Kainulainen
  */
 interface MSService {
 

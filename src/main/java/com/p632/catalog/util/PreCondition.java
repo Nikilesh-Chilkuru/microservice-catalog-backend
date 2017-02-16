@@ -8,7 +8,6 @@ import org.apache.commons.validator.routines.UrlValidator;
  *
  * This class selects the thrown exception by using the guideline given in Effective Java by Joshua Bloch (Item 60).
  *
- * @author Petri Kainulainen
  */
 public final class PreCondition {
     //static final String[] schemes = {"http","https"};
