@@ -21,47 +21,47 @@ public class MSTest {
 
 	private static final String INVALID_URL = "randomStringNotInUrlFormat";
 
-	@Test(expected = NullPointerException.class)
-	public void build_TitleIsNull_ShouldThrowException() {
-		MS.builder().title(null).description(DESCRIPTION).url(URL).build();
-	}
+//	@Test(expected = NullPointerException.class)
+//	public void build_TitleIsNull_ShouldThrowException() {
+//		MS.builder().title(null).description(DESCRIPTION).url(URL).build();
+//	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void build_TitleIsEmpty_ShouldThrowException() {
-		MS.builder().title("").description(DESCRIPTION).url(URL).build();
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void build_TitleIsEmpty_ShouldThrowException() {
+//		MS.builder().title("").description(DESCRIPTION).url(URL).build();
+//	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void build_TitleIsTooLong_ShouldThrowException() {
-		String tooLongTitle = StringTestUtil.createStringWithLength(MAX_LENGTH_TITLE + 1);
-		MS.builder().title(tooLongTitle).description(DESCRIPTION).url(URL).build();
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void build_TitleIsTooLong_ShouldThrowException() {
+//		String tooLongTitle = StringTestUtil.createStringWithLength(MAX_LENGTH_TITLE + 1);
+//		MS.builder().title(tooLongTitle).description(DESCRIPTION).url(URL).build();
+//	}
 
-	@Test(expected = NullPointerException.class)
-	public void build_DescriptionIsNull_ShouldThrowException() {
-		MS.builder().title(TITLE).description(null).url(URL).build();
-	}
+//	@Test(expected = NullPointerException.class)
+//	public void build_DescriptionIsNull_ShouldThrowException() {
+//		MS.builder().title(TITLE).description(null).url(URL).build();
+//	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void build_DescriptionIsEmpty_ShouldThrowException() {
-		MS.builder().title(TITLE).description("").url(URL).build();
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void build_DescriptionIsEmpty_ShouldThrowException() {
+//		MS.builder().title(TITLE).description("").url(URL).build();
+//	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void build_DescriptionIsTooLong_ShouldThrowException() {
-		String tooLongDescription = StringTestUtil.createStringWithLength(MAX_LENGTH_DESCRIPTION + 1);
-		MS.builder().title(TITLE).description(tooLongDescription).url(URL).build();
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void build_DescriptionIsTooLong_ShouldThrowException() {
+//		String tooLongDescription = StringTestUtil.createStringWithLength(MAX_LENGTH_DESCRIPTION + 1);
+//		MS.builder().title(TITLE).description(tooLongDescription).url(URL).build();
+//	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void build_UrlIsInvalid_shouldThrowException() {
-		MS.builder().title(TITLE).description(DESCRIPTION).url(INVALID_URL).build();
-	}
+//	@Test(expected = IllegalArgumentException.class)
+//	public void build_UrlIsInvalid_shouldThrowException() {
+//		MS.builder().title(TITLE).description(DESCRIPTION).url(INVALID_URL).build();
+//	}
 
-	@Test
-	public void build_WithTitleAndDescriptionAndUrl_ShouldCreateServiceEntryWithCorrectTitleAndDescriptionAndUrl() {
-		MS build = MS.builder().title(TITLE).description(DESCRIPTION).url(URL).build();
-
-		assertThatService(build).hasNoId().hasTitle(TITLE).hasDescription(DESCRIPTION).hasUrl(URL);
-	}
+//	@Test
+//	public void build_WithTitleAndDescriptionAndUrl_ShouldCreateServiceEntryWithCorrectTitleAndDescriptionAndUrl() {
+//		MS build = MS.builder().title(TITLE).description(DESCRIPTION).url(URL).build();
+//
+//		assertThatService(build).hasNoId().hasTitle(TITLE).hasDescription(DESCRIPTION).hasUrl(URL);
+//	}
 }
