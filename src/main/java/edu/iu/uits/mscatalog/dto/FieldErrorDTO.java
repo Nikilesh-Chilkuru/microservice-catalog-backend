@@ -1,8 +1,9 @@
-package com.p632.catalog.error;
+package edu.iu.uits.mscatalog.dto;
 
 /**
  * @author Naveen Jetty
  */
+
 public final class FieldErrorDTO {
 
     private final String field;

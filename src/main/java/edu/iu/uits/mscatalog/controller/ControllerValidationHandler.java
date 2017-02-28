@@ -1,5 +1,7 @@
-package com.p632.catalog.error;
+package edu.iu.uits.mscatalog.controller;
 
+
+import edu.iu.uits.mscatalog.dto.ValidationErrorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -19,12 +21,12 @@ import java.util.Locale;
  * @author Naveen Jetty
  */
 @ControllerAdvice
-public final class RestErrorHandler {
+public final class ControllerValidationHandler {
 
     private final MessageSource messageSource;
 
     @Autowired
-    public RestErrorHandler(MessageSource messageSource) {
+    public ControllerValidationHandler(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 
@@ -55,7 +57,7 @@ public final class RestErrorHandler {
 
         //If the message was not found, return the most accurate field error code instead.
         //You can remove this check if you prefer to get the default error message.
-        if (localizedErrorMessage.equals(fieldError.getDefaultMessage())) {
+        if (!localizedErrorMessage.equals(fieldError.getDefaultMessage())) {
             String[] fieldErrorCodes = fieldError.getCodes();
             localizedErrorMessage = fieldErrorCodes[0];
         }

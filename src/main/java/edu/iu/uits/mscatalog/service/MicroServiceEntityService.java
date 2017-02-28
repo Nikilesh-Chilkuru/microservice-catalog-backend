@@ -1,47 +1,52 @@
-package com.p632.catalog.service;
+package edu.iu.uits.mscatalog.service;
+
+
+
+import edu.iu.uits.mscatalog.dto.MicroServiceEntityDTO;
+import edu.iu.uits.mscatalog.model.MicroServiceEntity;
 
 import java.util.List;
 
 /**
  * This interface declares the methods that provides CRUD operations for
- * {@link com.p632.catalog.service.MS} objects.
+ * {@link MicroServiceEntity} objects.
  */
-interface MSService {
+public interface MicroServiceEntityService {
 
     /**
      * Creates a new microservice entry.
      * @param ms  The information of the created microservice entry.
      * @return      The information of the created microservice entry.
      */
-    MSDTO create(MSDTO ms);
+    MicroServiceEntityDTO create(MicroServiceEntityDTO ms);
 
     /**
      * Deletes a ms entry.
      * @param id    The id of the deleted microservice entry.
      * @return      THe information of the deleted microservice entry.
-     * @throws com.p632.catalog.service.ServiceNotFoundException  if no MS entry is found.
+     * @throws edu.iu.uits.mscatalog.exceptions.ServiceNotFoundException if no Microservice entry is found.
      */
-    MSDTO delete(String id);
+    MicroServiceEntityDTO delete(String id);
 
     /**
      * Finds all microservice entries.
      * @return      The information of all microservice entries.
      */
-    List<MSDTO> findAll();
+    List<MicroServiceEntityDTO> findAll();
 
     /**
      * Finds a single microservice entry.
      * @param id    The id of the requested microservice entry.
      * @return      The information of the requested microservice entry.
-     * @throws com.p632.catalog.service.ServiceNotFoundException if no microservice entry is found.
+     * @throws edu.iu.uits.mscatalog.exceptions.ServiceNotFoundException if no microservice entry is found.
      */
-    MSDTO findById(String id);
+    MicroServiceEntityDTO findById(String id);
 
     /**
      * Updates the information of a microservice entry.
      * @param ms  The information of the updated microservice entry.
      * @return      The information of the updated microservice entry.
-     * @throws com.p632.catalog.service.ServiceNotFoundException if no microservice entry is found.
+     * @throws edu.iu.uits.mscatalog.exceptions.ServiceNotFoundException if no microservice entry is found.
      */
-    MSDTO update(MSDTO ms);
+    MicroServiceEntityDTO update(MicroServiceEntityDTO ms);
 }

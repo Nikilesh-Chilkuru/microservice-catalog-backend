@@ -1,8 +1,12 @@
-package com.p632.catalog.error;
+package edu.iu.uits.mscatalog.dto;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+/**
+ * @author Naveen Jetty
+ */
 
 public final class ValidationErrorDTO {
 
