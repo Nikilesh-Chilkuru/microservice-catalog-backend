@@ -1,5 +1,6 @@
 package edu.iu.uits.mscatalog.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,22 +20,23 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @Builder
+@AllArgsConstructor
 public final class MicroServiceEntity {
     @Id
     private String id;
 
-//    @NotBlank(message = "{" + ConstraintMessages.TITLE_ERROR + "}")
-//    @Pattern(regexp = "[\\p{Print} ]{1,50}", message = "{" + ConstraintMessages.TITLE_ERROR + "}")
+    @NotBlank(message = "{" + ConstraintMessages.TITLE_ERROR + "}")
+    @Pattern(regexp = "[\\p{Print} ]{1,50}", message = "{" + ConstraintMessages.TITLE_ERROR + "}")
     private String title;
 
-//    @NotBlank(message = "{" + ConstraintMessages.DESCRIPTION_ERROR + "}")
-//    @Pattern(regexp = "[\\p{Print} ]{1,250}", message = "{" + ConstraintMessages.DESCRIPTION_ERROR + "}")
+    @NotBlank(message = "{" + ConstraintMessages.DESCRIPTION_ERROR + "}")
+    @Pattern(regexp = "[\\p{Print} ]{1,250}", message = "{" + ConstraintMessages.DESCRIPTION_ERROR + "}")
     private String description;
 
-//    @URL(message = "{" + ConstraintMessages.URL_ERROR + "}")
+    @URL(message = "{" + ConstraintMessages.URL_ERROR + "}")
     private String url;
 
-//    @Email(message = "{" + ConstraintMessages.EMAIL_ERROR + "}")
+    @Email(message = "{" + ConstraintMessages.EMAIL_ERROR + "}")
     private String email;
 
     public void update(String title, String description, String url, String email) {
@@ -47,7 +49,7 @@ public final class MicroServiceEntity {
     public class ConstraintMessages {
 
         public static final String EMAIL_ERROR = "microservice.email.error";
-        public static final String TITLE_ERROR = "microservice.name.error";
+        public static final String TITLE_ERROR = "microservice.title.error";
         public static final String URL_ERROR = "microservice.url.error";
         public static final String DESCRIPTION_ERROR = "microservice.description.error";
 
