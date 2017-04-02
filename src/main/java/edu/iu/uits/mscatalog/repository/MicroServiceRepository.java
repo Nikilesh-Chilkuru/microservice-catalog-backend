@@ -12,5 +12,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "catalog", path="catalog")
 public interface MicroServiceRepository extends PagingAndSortingRepository<MicroServiceEntity, String> {
 
-
+    MicroServiceEntity findByTitle(@Param("title") String title);
 }

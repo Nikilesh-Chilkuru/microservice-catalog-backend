@@ -1,7 +1,10 @@
 package edu.iu.uits.mscatalog;
 
+import edu.iu.uits.mscatalog.model.MicroServiceEntity;
+import edu.iu.uits.mscatalog.repository.MicroServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -23,7 +26,7 @@ import java.util.ResourceBundle;
  */
 
 @SpringBootApplication
-public class MicroServiceCatalogApplication extends WebMvcConfigurerAdapter{
+public class MicroServiceCatalogApplication extends WebMvcConfigurerAdapter implements CommandLineRunner{
     public static void main(String[] args) {
         SpringApplication.run(MicroServiceCatalogApplication.class, args);
     }
@@ -64,5 +67,34 @@ public class MicroServiceCatalogApplication extends WebMvcConfigurerAdapter{
     @Bean
     public ResourceBundle validationMessages() {
         return ResourceBundle.getBundle("ValidationMessages");
+    }
+
+
+    // Method of CommandLineRunner.... Runs once every time the application starts.
+    @Autowired
+    private MicroServiceRepository repository;
+
+    @Override
+    public void run(String... strings) throws Exception {
+        int catalogCount = 0;
+        for (MicroServiceEntity microService: this.repository.findAll()){
+            catalogCount++;
+            System.out.println(microService);
+        }
+
+        // If there are not catalog items in the database, create one for this microservice
+        if (catalogCount == 0){
+            MicroServiceEntity entity = MicroServiceEntity.builder().title("Micro Service Catalog")
+                                                                    .description("A catalog to get the list of all available microservices")
+                                                                    .url("http://localhost:8080")
+                                                                    .email("njetty@indiana.edu")
+                                                                    .build();
+            this.repository.save(entity);
+            System.out.println("Created a new Microservice catalog item for current service");
+            System.out.println(this.repository.findByTitle("Micro Service Catalog"));
+        }
+        else {
+            System.out.format("Already there are %d catalog items present, nothing new created",catalogCount);
+        }
     }
 }
