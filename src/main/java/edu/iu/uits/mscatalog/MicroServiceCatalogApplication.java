@@ -19,6 +19,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Validator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 /**
@@ -84,9 +86,10 @@ public class MicroServiceCatalogApplication extends WebMvcConfigurerAdapter impl
 
         // If there are not catalog items in the database, create one for this microservice
         if (catalogCount == 0){
+            String localURL = "http://localhost:8080";
             MicroServiceEntity entity = MicroServiceEntity.builder().title("Micro Service Catalog")
                                                                     .description("A catalog to get the list of all available microservices")
-                                                                    .url("http://localhost:8080")
+                                                                    .url(Arrays.asList(localURL,localURL,localURL))
                                                                     .email("njetty@indiana.edu")
                                                                     .build();
             this.repository.save(entity);
